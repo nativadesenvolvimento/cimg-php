@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-repository=php
+repository=circle-ci-php
 parent=base
 variants=(node browsers)
-namespace=cimg
+namespace=nativa
