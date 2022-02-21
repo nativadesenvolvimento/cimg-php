@@ -5,7 +5,7 @@ FROM cimg/base:2022.01
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV PHP_VERSION 8.1.2
+ENV PHP_VERSION 8.1.3
 ENV PHP_MINOR 8.1
 
 # Install dependencies
@@ -47,6 +47,8 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		--enable-exif \
 		--enable-zip \
 		--enable-soap \
+		--enable-ftp \
+		--enable-redis \
 		--with-config-file-scan-dir=/etc/php.d \
 		--with-curl \
 		--with-freetype \

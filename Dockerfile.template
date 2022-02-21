@@ -1,7 +1,7 @@
 # vim:set ft=dockerfile:
 
 # Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
-FROM cimg/%%PARENT%%:2022.01
+FROM nativa/%%PARENT%%:2022.01
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
@@ -32,7 +32,7 @@ RUN sudo apt-get update && sudo apt-get install -y \
 	&& \
 	sudo rm -rf /var/lib/apt/lists/* && \
 
-	curl -sSL "https://github.com/php/php-src/archive/refs/tags/${PHP_VERSION}.tar.gz" | tar -xz && \
+	curl -sSL "https://www.php.net/distributions/php-${PHP_VERSION}.tar.gz" | tar -xz && \
 	cd "php-${PHP_VERSION}" && \
 	./buildconf && \
 	./configure \
@@ -47,6 +47,8 @@ RUN sudo apt-get update && sudo apt-get install -y \
 		--enable-exif \
 		--enable-zip \
 		--enable-soap \
+		--enable-ftp \
+		--enable-redis \
 		--with-config-file-scan-dir=/etc/php.d \
 		--with-curl \
 		--with-freetype \
